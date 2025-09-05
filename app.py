@@ -2,10 +2,10 @@ import pandas as pd
 import pickle as pk
 import streamlit as st
 
-model = pk.load(open(r'D:\housholdprice\House_prediction_model.pkl','rb'))
+model = pk.load(open('House_prediction_model.pkl','rb'))
 
 st.header('Bangalore House Prices Predictor')
-data = pd.read_csv(r'D:\housholdprice\Bengaluru_House_Data.csv')
+data = pd.read_csv('Bengaluru_House_Data.csv')
 
 loc = st.selectbox('Choose the location', data['location'].dropna().astype(str).unique())
 sqft = st.number_input('Enter Total sqft')
