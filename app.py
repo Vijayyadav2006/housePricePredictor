@@ -1,8 +1,19 @@
 import pandas as pd
-import pickle as pk
 import streamlit as st
 
-model = pk.load(open('House_prediction_model.pkl','rb'))
+import pickle as pk
+
+
+import os
+
+model_path = 'House_prediction_model.pkl'
+if os.path.exists(model_path):
+    with open(model_path,'rb') as f:
+        model = pk.load(f)
+else:
+    st.error("Model file not found! Make sure 'House_prediction_model.pkl' is in the same folder as app.py")
+    st.stop()
+
 
 st.header('Bangalore House Prices Predictor')
 data = pd.read_csv('Bengaluru_House_Data.csv')
